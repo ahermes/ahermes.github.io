@@ -6,6 +6,18 @@
 		"width=device-width, initial-scale=1.0">
 	<!-- CSS file Included -->
 	<style>
+	
+
+.vert-move {
+
+    animation: mover .5s infinite  alternate;
+}
+
+@keyframes mover {
+    0% { transform: translateY(30px); }
+    100% { transform: translateY(-30px); }
+}
+	
 	h1 {
 	color: #060606;
 	margin-bottom: -5px;
@@ -88,7 +100,7 @@ p {
 /* Reset Button */
 #but {
 	box-sizing: border-box;
-	width: 100px;
+	width: 150px;
 	height: 50px;
 	border: 1px solid #060606;
 	margin-left: auto;
@@ -103,6 +115,11 @@ p {
 
 /* Player turn space */
 #print {
+	font-family: josephsophia, cursive;
+	color: pink;
+	font-size: 50px;
+}
+#print2 {
 	font-family: josephsophia, cursive;
 	color: pink;
 	font-size: 50px;
@@ -125,9 +142,10 @@ p {
 }
 
 body{
-	background-image: "background.jpg";
+	background-image: url("./background.jpg");
 	background-repeat: no-repeat;
-	background-position: top 70px left 570px;
+	background-attachment: fixed; 
+	background-position: center center;
 }
 
 
@@ -167,7 +185,10 @@ function myfunc() {
 	// that disabled all the other fields
 	if (b1 == '♀' && b4 == '♀' && b7 == '♀') {
 		document.getElementById('print')
-			.innerHTML = "C'est une Fille! <br> Bienvenue à Julia";
+			.innerHTML = "C'est une Fille!";
+		document.getElementById('print').classList.add("vert-move");
+		document.getElementById('print2')
+			.innerHTML = "Bienvenue à Julia";
 		myfunc_4();
 		myfunc_5();
 		myfunc_7();
@@ -305,7 +326,9 @@ function disable_and_white(btnName) {
 		<p id="ins">
 			Grattez et découvrez ...
 		</p>
-		<br><br>
+		<br><button id="but" onclick="myfunc_2()">
+			Rejouer
+		</button><br><br>
 		<div class = "ui">
 			<div class="row">
 				<input type="text" id= "b1"
@@ -341,13 +364,11 @@ function disable_and_white(btnName) {
 					readonly>
 			</div>
 		</div>
-		<br><br><br>
+		<br>
 		
-		<button id="but" onclick="myfunc_2()">
-			Rejouer
-		</button>
-		<br><br>
+		<br>
 		<p id="print"></p>
+		<p id="print2"></p>
 	</div>
 </body>
 
