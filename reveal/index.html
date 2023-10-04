@@ -18,7 +18,7 @@
     100% { transform: translateY(-30px); }
 }
 	
-	h1 {
+h1 {
 	color: #060606;
 	margin-bottom: -5px;
 }
@@ -116,12 +116,7 @@ p {
 /* Player turn space */
 #print {
 	font-family: josephsophia, cursive;
-	color: pink;
-	font-size: 50px;
-}
-#print2 {
-	font-family: josephsophia, cursive;
-	color: pink;
+	color: black;
 	font-size: 50px;
 }
 
@@ -147,6 +142,15 @@ body{
 	background-attachment: fixed; 
 	background-position: center center;
 }
+
+.mobile-break{
+    /* On small screens, we are no longer using row direction but column */
+ 
+	}
+
+@media screen and (min-width: 600px)  {
+        .mobile-break { display: none; }
+    }
 
 
 	</style>
@@ -184,31 +188,26 @@ function myfunc() {
 	// Checking if Player X won or not and after
 	// that disabled all the other fields
 	if (b1 == '♀' && b4 == '♀' && b7 == '♀') {
-		document.getElementById('print')
-			.innerHTML = "C'est une Fille!";
-		document.getElementById('print').classList.add("vert-move");
-		document.getElementById('print2')
-			.innerHTML = "Bienvenue à Julia";
+		
+		
 		myfunc_4();
 		myfunc_5();
 		myfunc_7();
 		myfunc_8();
 		myfunc_10();
 		myfunc_11();
+		setTimeout(function() {
+			document.getElementsByClassName("ui")[0].style.display = "none";
+			document.getElementById('print').style.display = "";
+		}, 600);
 
+
+		
 		b1btn.style.backgroundColor = "pink";
 		b4btn.style.backgroundColor = "pink";
 		b7btn.style.backgroundColor = "pink";
-	} else {
-		// osef
 	}
 	
-}
-
-// Function to reset game
-function myfunc_2() {
-	location.reload();
-	b1 = b2 = b3 = b4 = b5 = b6 = b7 = b8 = b9 = '';
 }
 
 // Here onwards, functions check turn of the player
@@ -326,9 +325,7 @@ function disable_and_white(btnName) {
 		<p id="ins">
 			Grattez et découvrez ...
 		</p>
-		<br><button id="but" onclick="myfunc_2()">
-			Rejouer
-		</button><br><br>
+		<br class="mobile-break">
 		<div class = "ui">
 			<div class="row">
 				<input type="text" id= "b1"
@@ -364,11 +361,7 @@ function disable_and_white(btnName) {
 					readonly>
 			</div>
 		</div>
-		<br>
-		
-		<br>
-		<p id="print"></p>
-		<p id="print2"></p>
+		<p id="print" class="vert-move" style="display: none;">C'est une Fille!</p>
 	</div>
 </body>
 
